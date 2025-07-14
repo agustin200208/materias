@@ -2,10 +2,11 @@
 
 // configuración de estados → emoji, color de borde y clase de badge
 const statusConfig = {
-  'aprobada':   { emoji: '✅', border: 'border-green-400', badge: 'badge-success' },
-  'cursando':   { emoji: '⏳', border: 'border-blue-400',  badge: 'badge-info'    },
-  'debo final': { emoji: '⚠️', border: 'border-yellow-400',badge: 'badge-warning' },
-  'pendiente':  { emoji: '🕒', border: 'border-gray-400', badge: 'badge-ghost'   }
+  'aprobada':   { emoji: '✅', text: 'Aprobada', border: 'border-green-400', badge: 'badge-success' },
+  'cursando':   { emoji: '⏳', text: 'Cursando', border: 'border-blue-400',  badge: 'badge-info' },
+  'debo final': { emoji: '⚠️', text: 'Debo final', border: 'border-yellow-400', badge: 'badge-warning' },
+  'pendiente':  { emoji: '🕒', text: 'Pendiente', border: 'border-gray-400', badge: 'badge-ghost' },
+  'disponible': { emoji: '🔔', text: 'Disponible para rendir', border: 'border-indigo-400', badge: 'badge-primary' }
 };
 
 // helper para mostrar un toast rápido
@@ -16,6 +17,13 @@ function showToast(message, type = 'info') {
   toast.innerText = message;
   document.getElementById('toasts').appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
+}
+
+function obtenerNombresCorrelativas(codigosCorrelativas, todasLasMaterias) {
+  return codigosCorrelativas.map(codigo => {
+    const materia = todasLasMaterias.find(m => m.codigo === codigo);
+    return materia ? materia.nombre : codigo; // Si no encuentra la materia, muestra el código
+  });
 }
 
 async function guardarMateriasEnServer() {
@@ -39,15 +47,54 @@ function mostrarMaterias(lista) {
       if (cont) cont.innerHTML = '';
     });
 
+  // Función para obtener el estilo de una correlativa según su estado
+  function getCorrelativaStyle(codigo) {
+    const materia = materiasGlobales.find(m => m.codigo === codigo);
+    if (!materia) return '';
+    
+    if (materia.estado.toLowerCase() === 'aprobada') {
+      return 'text-green-400';
+    } else if (materia.estado.toLowerCase().includes('final')) {
+      return 'text-yellow-400';
+    }
+    return 'text-gray-300';
+  }
+
+  // Función para mostrar las correlativas con estilos
+  function renderCorrelativas(codigos) {
+    if (!codigos.length) return 'Ninguna';
+    
+    return codigos.map(codigo => {
+      const materia = materiasGlobales.find(m => m.codigo === codigo);
+      const nombre = materia ? materia.nombre : codigo;
+      const style = getCorrelativaStyle(codigo);
+      return `<span class="${style}">${nombre}</span>`;
+    }).join(', ');
+  }
+
   // 2) genero cada tarjeta
   lista.forEach(m => {
+    // Corregida la lógica de disponibilidad:
+    const esDisponible = 
+      m.estado.toLowerCase() === 'pendiente' && 
+      m.correlativas.every(codigo => {
+        const correlativa = materiasGlobales.find(m => m.codigo === codigo);
+        return correlativa && 
+              (correlativa.estado.toLowerCase() === 'aprobada' || 
+               correlativa.estado.toLowerCase().includes('final'));
+      });
+
+    // Mostrar como disponible SOLO si es pendiente con correlativas aprobadas/debo final
+    // Las materias en "Debo final" mantienen su estado original
+    const estadoMostrar = esDisponible ? 'disponible' : m.estado.toLowerCase();
+    const cfg = statusConfig[estadoMostrar] || statusConfig['pendiente'];
+    
     const contId = m.tipo
       ? (m.tipo === 'taller' ? 'taller' : 'optativas')
       : 'ano' + m.ano;
     const cont = document.getElementById(contId);
     if (!cont) return;
 
-    const cfg = statusConfig[m.estado.toLowerCase()] || statusConfig['pendiente'];
     const bg = m.tipo
       ? (m.tipo === 'taller'
           ? 'bg-gradient-to-br from-purple-800 to-purple-700'
@@ -71,19 +118,18 @@ function mostrarMaterias(lista) {
       <div class="mb-4">
         <h3 class="font-extrabold text-xl mb-2">${m.nombre}</h3>
         <span class="absolute top-2 right-2 badge ${cfg.badge} flex items-center gap-1">
-          ${cfg.emoji} ${m.estado}
+          ${cfg.emoji} ${cfg.text}
         </span>
       </div>
       <p class="text-sm text-gray-200 mb-2">
         <strong>Código:</strong> ${m.codigo}
       </p>
-      <p class="text-sm text-gray-300">
-        <strong>Correlativas:</strong> ${
-          m.correlativas.length ? m.correlativas.join(', ') : 'Ninguna'
+      <p class="text-sm">
+        <strong class="text-gray-300">Correlativas:</strong> ${
+          renderCorrelativas(m.correlativas)
         }
       </p>
     `;
-
     // 3) dropdown de día solo si cursando
     const header = card.querySelector('.mb-4');
     if (m.estado.toLowerCase() === 'cursando') {
@@ -117,9 +163,9 @@ function mostrarMaterias(lista) {
 
       // actualización de badge y borde
       const nuevoCfg = statusConfig[m.estado.toLowerCase()];
-      const badgeEl  = card.querySelector('.badge');
-      badgeEl.className = `absolute top-2 right-2 badge ${nuevoCfg.badge} flex items-center gap-1`;
-      badgeEl.textContent = `${nuevoCfg.emoji} ${m.estado}`;
+  const badgeEl = card.querySelector('.badge');
+  badgeEl.className = `absolute top-2 right-2 badge ${nuevoCfg.badge} flex items-center gap-1`;
+  badgeEl.innerHTML = `${nuevoCfg.emoji} ${nuevoCfg.text}`;
       Object.values(statusConfig).forEach(s => card.classList.remove(s.border));
       card.classList.add(nuevoCfg.border);
 

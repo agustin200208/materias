@@ -66,9 +66,19 @@ function setupFiltros(materias) {
   btnAprobadas.onclick   = () => mostrarMaterias(
                               materias.filter(m => m.estado.toLowerCase() === 'aprobada')
                             );
-  btnDisponibles.onclick = () => mostrarMaterias(
-                              materias.filter(m => m.estado.toLowerCase() === 'pendiente')
-                            );
+  btnDisponibles.onclick = () => {
+    const materiasDisponibles = materias.filter(m => {
+      // Solo considerar materias pendientes
+      if (m.estado.toLowerCase() !== 'pendiente') return false;
+      
+      // Verificar que todas las correlativas estén aprobadas
+      return m.correlativas.every(codigoCorrelativa => {
+        const correlativa = materias.find(m => m.codigo === codigoCorrelativa);
+        return correlativa && correlativa.estado.toLowerCase() === 'aprobada';
+      });
+    });
+    mostrarMaterias(materiasDisponibles);
+  };
 }
 
 // 🏁 Arranco todo al cargar el script
