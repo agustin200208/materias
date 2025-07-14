@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario Académico</title>
+  <!-- DaisyUI Full CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.css" rel="stylesheet"/>
+  <!-- Tailwind CSS + DaisyUI config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      plugins: [require('daisyui')],
+      daisyui: { themes: false }
+    };
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-5xl font-bold mb-2 text-center text-blue-400">🎓 Calendario Académico 📅</h1>
+    <!-- Botones de vista -->
+    <div id="view-buttons" class="flex justify-center gap-2 mb-6">
+      <button id="btn-year" class="btn frosted border border-orange-300 text-orange-200 hover:bg-orange-300 hover:text-gray-900 rounded-xl transition flex items-center gap-2">📅 Año</button>
+      <button id="btn-mes" class="btn frosted border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-gray-900 rounded-xl transition flex items-center gap-2">📆 Mes</button>
+      <button id="btn-dia" class="btn frosted border border-yellow-300 text-yellow-200 hover:bg-yellow-300 hover:text-gray-900 rounded-xl transition flex items-center gap-2">⏰ Día</button>
+      <a id="btn-home" href="/index.html" class="btn frosted border border-green-300 text-green-200 hover:bg-green-300 hover:text-gray-900 rounded-xl transition flex items-center gap-2">🏠 Inicio</a>
+    </div>
+    <div id="calendar-container" class="grid grid-cols-4 grid-rows-3 gap-4">
+      <!-- Vista de Año, Mes o Día -->
+    </div>
+  </div>
+  <script src="/calendario/scripts/calendar.js"></script>
+</body>
+</html>

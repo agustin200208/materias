@@ -1,0 +1,525 @@
+[
+  {
+    "codigo": "I1101",
+    "nombre": "Análisis Matemático I",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": []
+  },
+  {
+    "codigo": "I1102",
+    "nombre": "Fundamentos de Programación",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": []
+  },
+  {
+    "codigo": "I0129",
+    "nombre": "Matemática Discreta",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": []
+  },
+  {
+    "codigo": "I1103",
+    "nombre": "Organización de Empresas",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": []
+  },
+  {
+    "codigo": "I0100",
+    "nombre": "Álgebra y Geometría Analítica",
+    "ano": 1,
+    "estado": "Debo final",
+    "correlativas": [
+      "I1101"
+    ]
+  },
+  {
+    "codigo": "I0106",
+    "nombre": "Física I",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I1101"
+    ]
+  },
+  {
+    "codigo": "I0113",
+    "nombre": "Arquitectura de Computadoras",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I0219"
+    ]
+  },
+  {
+    "codigo": "I1209",
+    "nombre": "Estructuras de Datos y Algoritmos",
+    "ano": 1,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I1102",
+      "I0129"
+    ]
+  },
+  {
+    "codigo": "I1201",
+    "nombre": "Análisis Matemático II A",
+    "ano": 2,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I1101"
+    ]
+  },
+  {
+    "codigo": "I1202",
+    "nombre": "Física II A",
+    "ano": 2,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0106"
+    ]
+  },
+  {
+    "codigo": "I1203",
+    "nombre": "Fundamentos de Economía",
+    "ano": 2,
+    "estado": "Cursando",
+    "correlativas": []
+  },
+  {
+    "codigo": "I0232",
+    "nombre": "Sintaxis y Semántica del Lenguaje",
+    "ano": 2,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1209"
+    ]
+  },
+  {
+    "codigo": "I0210",
+    "nombre": "Análisis de Sistemas I",
+    "ano": 2,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I1103",
+      "I1209",
+      "I0100"
+    ]
+  },
+  {
+    "codigo": "I1211",
+    "nombre": "Análisis Matemático II B",
+    "ano": 2,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1201"
+    ]
+  },
+  {
+    "codigo": "I0211",
+    "nombre": "Análisis de Sistemas II",
+    "ano": 2,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I0210"
+    ]
+  },
+  {
+    "codigo": "I0310",
+    "nombre": "Comunicaciones",
+    "ano": 2,
+    "estado": "Debo Final",
+    "correlativas": [
+      "I1209",
+      "I0113",
+      "I1202"
+    ]
+  },
+  {
+    "codigo": "I0226",
+    "nombre": "Paradigmas de Programación",
+    "ano": 2,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0232"
+    ]
+  },
+  {
+    "codigo": "I1221",
+    "nombre": "Base de Datos I",
+    "ano": 2,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I0210"
+    ]
+  },
+  {
+    "codigo": "I1312",
+    "nombre": "Base de Datos II",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1221"
+    ]
+  },
+  {
+    "codigo": "I1313",
+    "nombre": "Programación Avanzada I",
+    "ano": 3,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I0226"
+    ]
+  },
+  {
+    "codigo": "I0312",
+    "nombre": "Diseño de Sistemas I",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0211",
+      "I1221"
+    ]
+  },
+  {
+    "codigo": "I0304",
+    "nombre": "Probabilidad y Estadística",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0100"
+    ]
+  },
+  {
+    "codigo": "I1315",
+    "nombre": "Redes de Comunicación",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0310"
+    ]
+  },
+  {
+    "codigo": "I0233",
+    "nombre": "Sistemas Operativos",
+    "ano": 3,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I1315"
+    ]
+  },
+  {
+    "codigo": "I0313",
+    "nombre": "Diseño de Sistemas II",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1313",
+      "I1312",
+      "I0312"
+    ]
+  },
+  {
+    "codigo": "I1329",
+    "nombre": "Programación Avanzada II",
+    "ano": 3,
+    "estado": "Aprobada",
+    "correlativas": [
+      "I1313"
+    ]
+  },
+  {
+    "codigo": "I0376",
+    "nombre": "Ingeniería de Software I",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0226",
+      "I0312"
+    ]
+  },
+  {
+    "codigo": "I1331",
+    "nombre": "Arquitectura de Computación en la Nube",
+    "ano": 3,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1312",
+      "I1315"
+    ]
+  },
+  {
+    "codigo": "I0487",
+    "nombre": "Desarrollo Avanzado de Software",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1329",
+      "I0376"
+    ]
+  },
+  {
+    "codigo": "I0420",
+    "nombre": "Investigación Operativa",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0304"
+    ]
+  },
+  {
+    "codigo": "I0486",
+    "nombre": "Seguridad Informática",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0233",
+      "I1331"
+    ]
+  },
+  {
+    "codigo": "I1402",
+    "nombre": "Gestión de la Calidad",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0304"
+    ]
+  },
+  {
+    "codigo": "I0485",
+    "nombre": "Ingeniería de Software II",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0376",
+      "I0313"
+    ]
+  },
+  {
+    "codigo": "I1316",
+    "nombre": "Teoría y Sistemas de Control",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1202",
+      "I1211"
+    ]
+  },
+  {
+    "codigo": "I1427",
+    "nombre": "Sistemas de Gestión",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0420"
+    ]
+  },
+  {
+    "codigo": "I0507",
+    "nombre": "Inteligencia Artificial",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0487",
+      "I1312"
+    ]
+  },
+  {
+    "codigo": "I0432",
+    "nombre": "Simulación",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0304",
+      "I1211"
+    ]
+  },
+  {
+    "codigo": "I1415",
+    "nombre": "Gestión y Evaluación de Proyectos",
+    "ano": 4,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1402",
+      "I1203",
+      "I0485"
+    ]
+  },
+  {
+    "codigo": "I1511",
+    "nombre": "Proyectos de Tecnología Informática",
+    "ano": 5,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1415",
+      "I0486",
+      "I0485"
+    ]
+  },
+  {
+    "codigo": "I1",
+    "nombre": "Electiva I",
+    "ano": 5,
+    "estado": "pendiente",
+    "correlativas": []
+  },
+  {
+    "codigo": "I1512",
+    "nombre": "Inteligencia de Negocios",
+    "ano": 5,
+    "estado": "pendiente",
+    "correlativas": [
+      "I0432",
+      "I0507"
+    ]
+  },
+  {
+    "codigo": "I0503",
+    "nombre": "Administración Gerencial",
+    "ano": 5,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1427",
+      "I1415"
+    ]
+  },
+  {
+    "codigo": "I1525",
+    "nombre": "Proyecto Integrador de Sistemas (Anual)",
+    "ano": 5,
+    "estado": "pendiente",
+    "correlativas": []
+  },
+  {
+    "codigo": "I1520",
+    "nombre": "Auditoría Operativa",
+    "ano": 5,
+    "estado": "pendiente",
+    "correlativas": [
+      "I1427"
+    ]
+  },
+  {
+    "codigo": "I0401",
+    "nombre": "Seguridad, Higiene y Medio Ambiente",
+    "ano": 5,
+    "estado": "Aprobada",
+    "correlativas": []
+  },
+  {
+    "codigo": "I0500",
+    "nombre": "Legislación y Ejercicio Profesional",
+    "ano": 5,
+    "estado": "Aprobada",
+    "correlativas": []
+  },
+  {
+    "codigo": "I1130",
+    "nombre": "Emprendedorismo I",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I1131",
+    "nombre": "Emprendedorismo II",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I0303",
+    "nombre": "Inglés I",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I0446",
+    "nombre": "Inglés II",
+    "estado": "Aprobada",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I1230",
+    "nombre": "Comunicación Efectiva I",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I1231",
+    "nombre": "Comunicación Efectiva II",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I1330",
+    "nombre": "Trabajo colaborativo I",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I1332",
+    "nombre": "Trabajo colaborativo II",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I0555",
+    "nombre": "Práctica Profesional Supervisada",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "taller"
+  },
+  {
+    "codigo": "I1107",
+    "nombre": "Ecosistema Digital",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "electiva"
+  },
+  {
+    "codigo": "I1104",
+    "nombre": "Sistemas de Representación",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "electiva"
+  },
+  {
+    "codigo": "I1401",
+    "nombre": "Metodología de la Investigación",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "electiva"
+  },
+  {
+    "codigo": "I1508",
+    "nombre": "Marketing Digital y Analítica Web",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "electiva"
+  },
+  {
+    "codigo": "I1216",
+    "nombre": "Sistemas Embebidos I",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "electiva"
+  },
+  {
+    "codigo": "I0536",
+    "nombre": "Comercialización",
+    "estado": "pendiente",
+    "correlativas": [],
+    "tipo": "electiva"
+  }
+]

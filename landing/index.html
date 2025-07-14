@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestor de Materias</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Frosted glass backdrop for buttons */
+    .frosted {
+      background-color: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+
+  <!-- Sidebar fijo -->
+  <aside class="fixed top-0 left-0 bottom-0 w-64 bg-gray-800 p-6 overflow-auto">
+    <h2 class="text-2xl font-extrabold mb-6 bg-clip-text text-transparent 
+               bg-gradient-to-r from-blue-400 to-purple-500">
+      📚 Menú
+    </h2>
+    <nav class="space-y-2">
+      <a href="/"                       class="btn btn-ghost w-full justify-start text-2xl">🏠 Portal</a>
+      <a href="/landing/index.html"     class="btn btn-ghost w-full justify-start text-2xl py-2">📘 Materias</a>
+      <a href="/calendario/index.html"  class="btn btn-ghost w-full justify-start text-2xl py-2">📅 Calendario</a>
+    </nav>
+  </aside>
+
+  <!-- Contenedor principal con margen para el sidebar -->
+  <div class="ml-64">
+
+    <header class="text-center py-10">
+      <h1 class="text-5xl font-bold mb-2 text-blue-400">
+        📘 Gestor de Materias
+      </h1>
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <button id="btnEditar"
+                class="btn frosted border border-orange-300 text-orange-200 hover:bg-orange-300 hover:text-gray-900 rounded-xl transition flex items-center gap-2">
+          ✏️ Editar Estado
+        </button>
+        <button id="filtroTodas"
+                class="btn frosted border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-gray-900 rounded-xl transition">
+          Todas
+        </button>
+        <button id="filtroCursando"
+                class="btn frosted border border-teal-300 text-teal-200 hover:bg-teal-300 hover:text-gray-900 rounded-xl transition">
+          Cursando
+        </button>
+        <button id="filtroFinal"
+                class="btn frosted border border-yellow-300 text-yellow-200 hover:bg-yellow-300 hover:text-gray-900 rounded-xl transition">
+          Debo Final ⚠️
+        </button>
+        <button id="filtroAprobadas"
+                class="btn frosted border border-green-300 text-green-200 hover:bg-green-300 hover:text-gray-900 rounded-xl transition">
+          Aprobadas ✅
+        </button>
+        <button id="filtroDisponibles"
+                class="btn frosted border border-indigo-300 text-indigo-200 hover:bg-indigo-300 hover:text-gray-900 rounded-xl transition">
+          🔔 Disponibles
+        </button>
+        <a href="/calendario/index.html"
+           class="btn frosted border border-orange-400 text-orange-300 hover:bg-orange-300 hover:text-gray-900 rounded-xl transition flex items-center gap-2">
+          📅 Calendario
+        </a>
+      </div>
+    </header>
+
+    <!-- Template de card de materia -->
+    <template id="tpl-materia-card">
+      <div class="card w-64 bg-gray-800 shadow-xl m-2">
+        <div class="card-body">
+          <div class="mb-4 flex items-center justify-between">
+            <h3 class="font-extrabold text-xl">NOMBRE</h3>
+            <div class="flex items-center">
+              <select class="select select-sm bg-gray-800 text-gray-100 border border-gray-600 mr-2">
+                <option value="">—</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miércoles">Miércoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+              </select>
+              <span class="badge flex items-center gap-1">ESTADO</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-200 mb-2">
+            <strong>Código:</strong> CODIGO
+          </p>
+          <p class="text-sm text-gray-300">
+            <strong>Correlativas:</strong> CORRELATIVAS
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <main class="px-8 py-10 space-y-16">
+      <!-- Primer Año -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          📘 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-100">
+            Primer Año
+          </span>
+        </h2>
+        <div id="ano1" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+      <!-- Segundo Año -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          📗 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-teal-100">
+            Segundo Año
+          </span>
+        </h2>
+        <div id="ano2" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+      <!-- Tercer Año -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          📙 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-100">
+            Tercer Año
+          </span>
+        </h2>
+        <div id="ano3" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+      <!-- Cuarto Año -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          📕 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-indigo-100">
+            Cuarto Año
+          </span>
+        </h2>
+        <div id="ano4" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+      <!-- Quinto Año -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          📓 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-300 to-red-100">
+            Quinto Año
+          </span>
+        </h2>
+        <div id="ano5" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+      <!-- Materias Taller -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          🧰 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-100">
+            Materias Taller
+          </span>
+        </h2>
+        <div id="taller" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+      <!-- Materias Electivas -->
+      <section class="flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
+          🎯 
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-pink-100">
+            Materias Electivas
+          </span>
+        </h2>
+        <div id="optativas" class="flex flex-wrap gap-6 justify-center"></div>
+      </section>
+    </main>
+
+    <div id="toasts" class="fixed top-4 right-4 space-y-2 z-50"></div>
+    <script defer src="/landing/init.js"></script>
+    <script defer src="/landing/mostrarMaterias.js"></script>
+  </div>
+</body>
+</html>
